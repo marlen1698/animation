@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo01</title>
+    <link type="text/css" rel="stylesheet" href="../css/demo.css">
+
+</head>
+<body>
+<p>以下demo没有考虑响应式，如有视觉差，敬请谅解</p>
+<div class="test">
+    <a href="demo01.html">demo01</a>
+    <a href="demo02.html">demo02</a>
+    <a href="demo03.html">demo03</a>
+    <a href="demo04.html">demo04</a>
+    <a href="demo05.html">demo05</a>
+</div>
+<div class="content">
+
+    <p>
+        <b>注释：</b>1.请使用CSS或js在id为example的元素上实现以下动画效果：
+        鼠标悬停与该元素上时，开始匀速旋转并伸缩，一个周期时间为5秒，前半部分逐渐缩小至一半大小，后半部分逐渐恢复到原有尺寸，持续播放直至鼠标离开该元素。
+    </p>
+    <div class="animation">
+        1
+    </div>
+
+
+</div>
+<script type="text/javascript" src="../js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('.animation').onmousedown(function () {
+            $(this).addClass("animation2")
+        });
+    })
+</script>
+</body>
+</html>

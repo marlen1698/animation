@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.test {
+    width: 500px;
+    height: 30px;
+    margin: 40px auto 20px;
+}
+
+.test a {
+    display: inline-block;
+
+}
+
+.content {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+/*=====================================================demo01 star=========================================================*/
+
+.animation {
+    width: 300px;
+    height: 300px;
+    border-radius: 150px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    background: yellow;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.animation:hover {
+    -webkit-animation: rotate 5s linear infinite;
+    animation: rotate 5s linear infinite
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg) skew(0deg) scale(1);
+        -ms-transform: rotate(0deg) skew(0deg) scale(1); /* IE 9 */
+        -moz-transform: rotate(0deg) skew(0deg) scale(1); /* Firefox */
+        -webkit-transform: rotate(0deg) skew(0deg) scale(1); /* Safari ºÍ Chrome */
+        -o-transform: rotate(0deg) skew(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) skew(0deg) scale(.5);
+        -ms-transform: rotate(180deg) skew(0deg) scale(.5); /* IE 9 */
+        -moz-transform: rotate(180deg) skew(0deg) scale(.5); /* Firefox */
+        -webkit-transform: rotate(180deg) skew(0deg) scale(.5); /* Safari ºÍ Chrome */
+        -o-transform: rotate(180deg) skew(0deg) scale(.5);
+    }
+    100% {
+        transform: rotate(360deg) skew(0deg) scale(1);
+        -ms-transform: rotate(360deg) skew(0deg) scale(1); /* IE 9 */
+        -moz-transform: rotate(360deg) skew(0deg) scale(1); /* Firefox */
+        -webkit-transform: rotate(360deg) skew(0deg) scale(1); /* Safari ºÍ Chrome */
+        -o-transform: rotate(360deg) skew(0deg) scale(1);
+    }
+}
+
+/*=====================================================demo01 end=========================================================*/
+
+/*=====================================================demo02 star=========================================================*/
+.matrix {
+    width: 500px;
+    height: 300px;
+    margin: 30px auto;
+    position: relative;
+    /*background: url(images/bg-grid.jpg) no-repeat center center;*/
+    background-size: 100% 100%;
+}
+
+/*//默认图片都在容器中水平垂直居中*/
+.matrix div {
+    height: 70px;
+    width: 50px;
+    position: absolute;
+    border: 1px solid red;
+
+}
+
+.matrix div:nth-child(1) {
+    opacity: .5;
+    z-index: 1;
+}
+
+.matrix div:nth-child(2) {
+    opacity: 1;
+    z-index: 2;
+    transform: translate(400px, 250px);
+}
+
+.matrix div:nth-child(3) {
+    opacity: 1;
+    z-index: 3;
+    transform: matrix(1, 0, -1, 1, 500, 250);
+}
+
+/*=====================================================demo02 end=========================================================*/

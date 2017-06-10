@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo03</title>
+    <link type="text/css" rel="stylesheet" href="../css/demo.css">
+</head>
+<body>
+<div>
+    <canvas id="myCanvas" width="1200" height="600" style="border:1px solid red;">
+        Your browser does not support the canvas element.
+    </canvas>
+    <div class="test">
+        <a href="demo01.html">demo01</a>
+        <a href="demo02.html">demo02</a>
+        <a href="demo03.html">demo03</a>
+        <a href="demo04.html">demo04</a>
+        <a href="demo05.html">demo05</a>
+    </div>
+    <!--<div class="content">-->
+    <p>
+        <b>注释：</b>3.请使用canvas完成以下动画效果（请注明要使用的框架或引擎）：
+        (1)加载给定的图片example.png放置于canvas左上角；
+        (2)鼠标点击canvas的任意位置，加载的图像在1秒内匀速移动至点击位置（中心与点击位置重合
+    </p>
+    <p>jQuery框架，Google搜索引擎， 略有变动题目</p>
+
+    </div>
+
+
+    <script type="text/javascript" src="../js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript">
+
+        var starx = 0;
+        var stary = 0;
+        var position;
+        var xd, yd;
+        var stepx, stepy;
+        var c = document.getElementById("myCanvas");
+        var cxt = c.getContext("2d");
+
+//        var img = new Image();
+//        img.src = "../images/example.jpg";
+//        img.onload = function () { //确保图片已经加载完毕
+//            cxt.drawImage(img, 0, 0, 100, 100);//
+//        };
+
+        drawing({x: starx, y: stary});
+        function drawing(po) {
+            cxt.clearRect(0, 0, 1200,600);
+//            cxt.drawImage(img, 0, 0);
+            cxt.fillStyle = "yellow";
+            cxt.strokeRect(po.x, po.y, 100, 100);
+            cxt.fillRect(po.x, po.y, 100, 100);
+            starx = po.x;
+            stary = po.y;
+        }
+
+        function getPositionOnCanvas(canvas, x, y) {
+            var box = canvas.getBoundingClientRect();
+            var obj = {
+                x: x - box.left-50,
+                y: y - box.top-50
+            };
+            return obj;
+        }
+
+        $('canvas').on('mousedown', function (event) {
+            position = getPositionOnCanvas(c, event.offsetX, event.offsetY);
+            var distance = Math.sqrt(Math.pow((position.x - starx), 2) + Math.pow((position.y - stary), 2));
+            distance = Math.floor(distance);
+            if ((position.x - starx) > 0) {
+                xd = 1
+            } else {
+                xd = -1;
+            }
+            if ((position.y - stary) > 0) {
+                yd = 1
+            } else {
+                yd = -1;
+            }
+            var ratioy = Math.abs((position.y - stary) / distance);
+            var ratiox = Math.abs((position.x - starx) / distance);
+            stepx = 1 * ratiox * xd;
+            stepy = 1 * ratioy * yd;
+            drawingNext();
+        });
+        function drawingNext() {
+            if (xd * (position.x - starx) >= 0) {
+                drawing({x:(starx + stepx), y:(stary + stepy)});
+                setTimeout(drawingNext, 10)
+            }
+            else {
+                return false;
+            }
+
+        }
+    </script>
+
+</div>
+</body>
+</html>
